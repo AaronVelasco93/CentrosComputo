@@ -40,16 +40,15 @@ public class Grupo2807 {
             
             //definir la URL
             host="jdbc:mysql://localhost:3306/";
-            
             dbName="fes_aragon";
             dbUser="root";
             dbPass="123456";
             
             //3.- Establecer la conexion a la base de datos
            
-            Connection db = DriverManager.getConnection(host+dbName,dbUser,dbPass);
+            Connection conect = DriverManager.getConnection(host+dbName,dbUser,dbPass);
             
-            Statement st = db.createStatement();
+            Statement st = conect.createStatement();
             
             ResultSet rs = st.executeQuery("SELECT * FROM alumno");
             
@@ -61,7 +60,7 @@ public class Grupo2807 {
                 
          rs.close();
          st.close();
-         db.close();//conexion
+         conect.close();//conexion
             
         } catch (Exception e) {
             System.out.println("Problema con la conexion"+e);
