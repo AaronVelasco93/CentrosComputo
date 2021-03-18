@@ -20,11 +20,12 @@ public class Grupo2809 {
         /**
          * Nombre de DB: fes_aragon
          * Tabla: alumno
-         * campos: nombre_alumno, carrera
+         * campos: nombre_usuario, carrera
          * host: localhost - 127.0.0.1
          * puerto:3306
          * user:root
          * pass:123456
+         * pass:"";
          */
         String host;
         String dbName;
@@ -36,30 +37,33 @@ public class Grupo2809 {
             
             //Definir la url
             host="jdbc:mysql://localhost:3306/";
-            //nombre de la db
+            //nombre de la conect
             dbName="fes_aragon";
             
             //3.- Establecemos una conexion
             
-            Connection db = DriverManager.getConnection(host + dbName,"root", "123456");
+            Connection conect = DriverManager.getConnection(host + dbName,"root", "123456");
             
-            Statement st = db.createStatement();
+            Statement st = conect.createStatement();
             
             ResultSet rs = st.executeQuery("SELECT * FROM alumno");
             
-            if (rs.wasNull()) 
-                System.out.println("NADA \n");
+            if (rs.wasNull()){
+                System.out.println("NADA");
+            } 
+            
             while (rs.next())
-                System.out.println(rs.getString("nombre_alumno")+" "+rs.getString("CARRERA")+"");
+                System.out.println(rs.getString("nombre_usuario")+" "+rs.getString("CARRERA")+"");
             
             rs.close();
             st.close();
-            db.close();
+            conect.close();
             
             
         } catch (Exception e) {
             
             System.out.println("problema con la conexion"+e);
+            e.printStackTrace();
             
         }
         

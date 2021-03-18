@@ -57,7 +57,7 @@ public class Grupo2807 {
                     System.out.println("No hay NADA");
             
             while (rs.next()) 
-                    System.out.println(rs.getString("nombre_alumno")+" "+rs.getString("carrera"));
+                    System.out.println(rs.getString("nombre_usuario")+" "+rs.getString("carrera"));
                 
          rs.close();
          st.close();
